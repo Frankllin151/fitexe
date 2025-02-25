@@ -19,15 +19,23 @@ export default function GrupoMuscular({setIsModalOpen, setValues})
  }
  return(
 
-   <div className="">
-                         <h3 className="">Grupo Muscular:</h3>
-                       {gruposMusculares.map((grupo) =>(
-                         <div className="m-2" key={grupo.id}>
-                       <p>{grupo.nome} - {grupo.dia}  -  : 
-                         <PrimaryButton onClick={() => handleOpenModal(grupo.id, grupo.nome)}>Criar Exercicio</PrimaryButton></p>
-                         </div>
-                       ))}
-                      </div>
+  <div className="">
+  <h3 className="">Grupo Muscular:</h3>
+  {gruposMusculares.length > 0 ? (
+    gruposMusculares.map((grupo) => (
+      <div className="m-2" key={grupo.id}>
+        <p>
+          {grupo.nome} - {grupo.dia} -  
+          <PrimaryButton onClick={() => handleOpenModal(grupo.id, grupo.nome)}>
+            Criar Exercicio
+          </PrimaryButton>
+        </p>
+      </div>
+    ))
+  ) : (
+    <p className="text-gray-500">Sem grupo muscular</p>
+  )}
+</div>
 
  )
 }

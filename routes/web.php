@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerDashboard;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -11,9 +12,7 @@ Route::get('/', function () {
  return redirect()->route("login");
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ControllerDashboard::class, "index"])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get("/create", [CreateExController::class, "create"])->middleware(['auth', 'verified'])->name("create");
 Route::post("/postCriar", [CreateExController::class, "postCriar"])->middleware(['auth', 'verified'])->name("postCriar");

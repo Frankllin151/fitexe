@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Exercicio;
 use Illuminate\Http\Request;
 use App\Models\GrupoMuscular;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class CreateExController extends Controller
@@ -40,6 +42,27 @@ return redirect()->route("create");
 
   public function exercicioPost(Request $request)
   {
-    dd($request->all());
+   $dados = $request->all();
+       
+$id_gp_mc = $dados["id_gp_mc"];
+    $exercicios = [];
+    foreach($dados as $key => $value){
+      if(preg_match("/nome(\d+)/", $key, $matches)){
+    $index = $matches[1]; 
+
+    $exercicios[] = [
+  'id_gp_mc' => $id_gp_mc,
+  'nome' => $dados["nome{$index}"],
+  'time_exercicio' => $dados["time_exercicio{$index}"] ?? "Sem descanso",
+  'serie' => $dados["serie{$index}"],
+  'repeticao' => $dados["repeticao{$index}"] ,
+  'tecnica' => $dados["tecnica{$index}"] ?? null,
+
+    ];
+      }
+    }
+  DB::table("exercicio")->insert($exercicios);
+
+  return response()->json(['message' => 'Exercícios cadastrados com sucesso!']);
   }
 }

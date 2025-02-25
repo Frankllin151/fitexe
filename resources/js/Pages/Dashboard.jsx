@@ -1,7 +1,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-
+import {usePage} from "@inertiajs/react";
 export default function Dashboard() {
+const gruposMusculares = usePage().props;
+console.log(gruposMusculares);
+
     return (
         <AuthenticatedLayout
             header={
@@ -10,7 +13,7 @@ export default function Dashboard() {
                 </h2>
             }
         >
-            <Head title="Dashboard" />
+            <Head title="Seu Treino" />
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

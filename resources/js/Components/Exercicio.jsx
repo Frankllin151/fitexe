@@ -97,13 +97,13 @@ placeholder="ex. drop 2 série no final"
 </div>
 ))}
 <div className="flex justify-end">
-  <PrimaryButton onClick={handleSubmitDados}>Add</PrimaryButton>
+  <PrimaryButton onClick={handleSubmitDados}>Salvar</PrimaryButton>
 </div>
  </div>
   <div className="">
     <PrimaryButton 
     onClick={handleAddContainer}
-    >Add</PrimaryButton>
+    >Add Exercicio</PrimaryButton>
   </div>
   </div>
   </div>

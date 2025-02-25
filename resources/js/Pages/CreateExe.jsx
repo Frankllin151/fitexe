@@ -29,13 +29,13 @@ const user = usePage().props.auth.user;
 })
 
 const diaData = {
-  segunda: "Segunda",
-  terca: "Terça", 
-  quarta: "Quarta", 
-  quinta: "Quinta", 
-  sexta: "Sexta", 
-  sabado: "Sábado", 
-  domingo: "Domingo"
+  segunda: "A:Segunda",
+  terca: "B:Terça", 
+  quarta: "C:Quarta", 
+  quinta: "D:Quinta", 
+  sexta: "E:Sexta", 
+  sabado: "F:Sábado", 
+  domingo: "G:Domingo"
 }
 
  const submit = (e) => {
