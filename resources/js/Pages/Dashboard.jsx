@@ -1,9 +1,10 @@
+import TreinoDesktop from '@/Components/TreinoDesktop';
+import TreinoReposive from '@/Components/TreinoReposive';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import {usePage} from "@inertiajs/react";
 export default function Dashboard() {
-const gruposMusculares = usePage().props;
-console.log(gruposMusculares);
+const gruposMusculares = usePage().props.gruposMusculares;
 
     return (
         <AuthenticatedLayout
@@ -17,11 +18,15 @@ console.log(gruposMusculares);
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            You're logged in!
-                        </div>
-                    </div>
+                <div className="m-3 justify-center flex bg-white p-6 shadow-sm sm:rounded-lg">
+      <div className="font-medium ">
+      <h3>Observe:</h3> <p>A:Segunda , B:Terça , C:Quarta, 
+        D:Quinta , E:Sexta , F:Sabádo , G:Domingo
+        </p>
+      </div>
+    </div>
+                    <TreinoReposive  gruposMusculares={gruposMusculares}/>
+                    <TreinoDesktop gruposMusculares={gruposMusculares}/>
                 </div>
             </div>
         </AuthenticatedLayout>
