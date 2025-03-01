@@ -65,4 +65,12 @@ $id_gp_mc = $dados["id_gp_mc"];
 
   return response()->json(['message' => 'Exercícios cadastrados com sucesso!']);
   }
+
+  public function readExercicio($id)
+  {
+    $exercicios = DB::table("exercicio")->where("id_gp_mc", $id)->get();
+    return Inertia::render("Exercicio", [
+      "exericicos" => $exercicios
+    ]);
+  }
 }

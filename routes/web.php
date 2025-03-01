@@ -17,6 +17,7 @@ Route::get('/dashboard', [ControllerDashboard::class, "index"])->middleware(['au
 Route::get("/create", [CreateExController::class, "create"])->middleware(['auth', 'verified'])->name("create");
 Route::post("/postCriar", [CreateExController::class, "postCriar"])->middleware(['auth', 'verified'])->name("postCriar");
 Route::post("/exerciciopost" , [CreateExController::class, "exercicioPost"])->middleware(['auth', 'verified'])->name("exerciciopost");
+Route::get("/dashboard/exercicio/{id}", [CreateExController::class, "readExercicio"])->middleware(['auth', 'verified'])->name("exercicio");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
