@@ -69,8 +69,11 @@ $id_gp_mc = $dados["id_gp_mc"];
   public function readExercicio($id)
   {
     $exercicios = DB::table("exercicio")->where("id_gp_mc", $id)->get();
+    $grupoMuscular = DB::table("gp_mc")->where("id", $id)->first(["nome"]);
+
     return Inertia::render("Exercicio", [
-      "exericicos" => $exercicios
+      "exericicos" => $exercicios, 
+      "grupoMusculares" => $grupoMuscular
     ]);
   }
 }
