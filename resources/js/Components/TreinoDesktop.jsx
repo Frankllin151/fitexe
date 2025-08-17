@@ -1,4 +1,13 @@
+"use client"
 import { router } from "@inertiajs/react"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 export default function TreinoDesktop({gruposMusculares})
 {
@@ -8,23 +17,27 @@ export default function TreinoDesktop({gruposMusculares})
     }
 
   return(
-    <>
-    
-    <div className=" mt-4 hidden mx-auto w-full sm:px-6 lg:px-8 lg:flex lg:flex-wrap lg:justify-center lg:gap-4 cursor-pointer">
-      
-      {gruposMusculares.map((grupo) =>(
-       <div
-       onClick={() => handlePageExercicio(grupo.id)}
-       key={grupo.id}
-       className="w-full sm:w-1/2 lg:w-1/4 overflow-hidden bg-white shadow-sm sm:rounded-lg p-4"
-     >
-       <div className="p-6 text-gray-900 font-semibold">
-        <p>{grupo.dia.split(":")[0]}:{grupo.nome}</p>
-       </div>
-     </div>
-      ))}
-
-</div>
+  <>
+  <div className="gap-4">
+    {gruposMusculares.map((grupo) => (
+      <Card 
+        key={grupo.id}
+        onClick={() => handlePageExercicio(grupo.id)}
+        className="w-full sm:w-1/2 lg:w-1/4 cursor-pointer hover:shadow-md transition-shadow duration-200 hover:scale-105 transform transition-transform"
+      >
+        <CardHeader className="pb-3">
+          <CardTitle className="text-lg font-semibold text-gray-900">
+            {grupo.dia.split(":")[0]}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-gray-700 font-medium">
+            {grupo.nome}
+          </p>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
 </>
   )
 }
